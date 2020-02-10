@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
     private fun checkAnswers() {
         val correctAnswers = arrayOf("T", "F", "F", "T");
         val givenAnswers = arrayOf(input_1.text, input_2.text, input_3.text, input_4.text);
-c
+
         val counter = 0;
 
         for (i in 0..3) {
