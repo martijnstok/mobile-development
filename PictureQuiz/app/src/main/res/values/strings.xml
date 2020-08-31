@@ -1,7 +1,0 @@
-<resources>
-    <string name="app_name">Picture Quiz</string>
-    <string name="button_text">Confrim</string>
-    <string name="giraffe">Giraffe</string>
-    <string name="correct">Correct!</string>
-    <string name="incorrect">Incorrect, the correct answer is Giraffe!</string>
-</resources>
