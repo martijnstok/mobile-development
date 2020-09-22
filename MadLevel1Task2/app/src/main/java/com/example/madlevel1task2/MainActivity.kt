@@ -21,14 +21,14 @@ class MainActivity : AppCompatActivity() {
     private fun checkAll(){
         var counter: Int = 0
 
-        var correct_answers = arrayOf(
+        val correct_answers = arrayOf(
             "T",
             "F",
             "F",
             "F"
         )
 
-        var given_answers = arrayOf(
+        val given_answers = arrayOf(
             binding.answer1.text.toString(),
             binding.answer2.text.toString(),
             binding.answer3.text.toString(),

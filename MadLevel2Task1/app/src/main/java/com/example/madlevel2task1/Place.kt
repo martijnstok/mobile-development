@@ -6,7 +6,7 @@ data class Place(
     var name: String,
     @DrawableRes var imageResId: Int
 ) {
-    companion object {
+     companion object {
         val PLACE_NAMES = arrayOf(
             "Amsterdam Dam",
             "Amsterdam Weesperplein",
