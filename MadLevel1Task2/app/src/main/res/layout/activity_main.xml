@@ -162,8 +162,8 @@
     <EditText
         android:id="@+id/answer_1"
         android:layout_width="100dp"
-        android:layout_height="35dp"
-        android:layout_marginTop="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="35dp"
         android:layout_marginEnd="32dp"
         android:ems="10"
         android:inputType="textPersonName"
@@ -173,8 +173,8 @@
     <EditText
         android:id="@+id/answer_2"
         android:layout_width="100dp"
-        android:layout_height="35dp"
-        android:layout_marginTop="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="35dp"
         android:layout_marginEnd="32dp"
         android:ems="10"
         android:inputType="textPersonName"
@@ -184,8 +184,8 @@
     <EditText
         android:id="@+id/answer_3"
         android:layout_width="100dp"
-        android:layout_height="35dp"
-        android:layout_marginTop="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="35dp"
         android:layout_marginEnd="32dp"
         android:ems="10"
         android:inputType="textPersonName"
@@ -195,8 +195,8 @@
     <EditText
         android:id="@+id/answer_4"
         android:layout_width="100dp"
-        android:layout_height="35dp"
-        android:layout_marginTop="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="35dp"
         android:layout_marginEnd="32dp"
         android:ems="10"
         android:inputType="textPersonName"
