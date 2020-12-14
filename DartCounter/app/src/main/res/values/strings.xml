@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Capstone</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="create_game">Start Game</string>
+    <string name="player_1">Player 1</string>
+    <string name="player_2">Player 2</string>
+
+    <string name="game_titel_501">501</string>
+
+    <string name="player1">Speler 1</string>
+    <string name="player2">Speler 2</string>
+
+    <string name="scoreBtn">Score invoeren</string>
+    <string name="submitescoreBtn">Opslaan</string>
+
+    <string name="score_input_hint">180</string>
+    <string name="not_valid_score">Geen correcte score ingevoerd</string>
+    <string name="not_valid_game">Geen correcte namen ingevoerd</string>
+    <string name="action_delete">Reset score</string>
+    <string name="to_high_score">Te hoge score, helaas</string>
+    <string name="winner">%1$s heeft gewonnen</string>
+
+
+</resources>
