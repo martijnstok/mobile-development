@@ -81,6 +81,12 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
         android:text="@string/scoreBtn"
+        android:paddingLeft="40dp"
+        android:paddingTop="10dp"
+        android:paddingRight="40dp"
+        android:paddingBottom="10dp"
+        android:textColor="@color/colorWhite"
+        app:backgroundTint="@color/colorPrimaryDark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
