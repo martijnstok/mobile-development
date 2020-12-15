@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "scoreTable")
-data class Score (
+data class Score(
     @ColumnInfo(name = "score")
     var score: Int,
 

@@ -12,6 +12,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.dartcounter.R
 import com.example.dartcounter.model.Score
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_game.*
 import kotlinx.android.synthetic.main.fragment_score.*
 
@@ -24,6 +25,7 @@ class ScoreFragment : Fragment() {
 
     private var turn: Int = 1
     val winScore: Int = 501
+    val maxthrow: Int = 180
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,11 +40,14 @@ class ScoreFragment : Fragment() {
 
         initViews()
 
+        //set button onClickListener
         btn_submit.setOnClickListener {
+            //Voeg score toe
             onAddScore(turn)
         }
     }
 
+    //Create function to load the view
     private fun initViews() {
         //Make sure you van access LastGame Table
         gameviewModel.lastGame.observe(viewLifecycleOwner, Observer { game ->
@@ -58,45 +63,60 @@ class ScoreFragment : Fragment() {
         })
     }
 
+    //Toevoegen van score
     private fun onAddScore(turn: Int) {
+        //Get input user
         val scoreText: String = etScore.getText().toString()
         val finalValue = scoreText.toInt()
 
-        if (scoreText.isNotBlank() && finalValue >= 0 && finalValue <= 180) {
+        //check if inoput is valid
+        if (scoreText.isNotBlank() && finalValue >= 0 && finalValue <= this.maxthrow) {
 
             //Make sure player doesnt put in higher score than allowed in gane
             if (turn == 1 && calcScorePlayer1(finalValue) <= this.winScore) {
+                //Inset score for player 1
+
+                //insert score
                 viewModel.insertScore(Score(finalValue, turn))
+
+                //Update game
                 gameviewModel.updateGame(
                     nextTurn(),
                     calcScorePlayer1(finalValue),
                     calcScorePlayer2(0)
                 )
             } else if (turn == 2 && calcScorePlayer2(finalValue) <= this.winScore) {
+                //Inset score for player 2
+
+                //insert score
                 viewModel.insertScore(Score(finalValue, turn))
+
+                //Update game
                 gameviewModel.updateGame(
                     nextTurn(),
                     calcScorePlayer1(0),
                     calcScorePlayer2(finalValue)
                 )
             } else {
-                Toast.makeText(
-                    activity,
-                    R.string.to_high_score, Toast.LENGTH_SHORT
-                ).show()
+                //Give user feedback that score is to hight
+                Snackbar.make(tv_player, R.string.to_high_score, Snackbar.LENGTH_SHORT).show()
+
+                //Insert score
                 viewModel.insertScore(Score(0, turn))
+
+                //Update gamem with both added 0
                 gameviewModel.updateGame(nextTurn(), calcScorePlayer1(0), calcScorePlayer2(0))
             }
 
+            //Change fragment back, to GameFragment
             findNavController().popBackStack()
         } else {
-            Toast.makeText(
-                activity,
-                R.string.not_valid_score, Toast.LENGTH_SHORT
-            ).show()
+            //Give user feedback that score is not valid
+            Snackbar.make(tv_player, R.string.not_valid_score, Snackbar.LENGTH_SHORT).show()
         }
     }
 
+    //Calculate totalscore for player 1 by thow
     private fun calcScorePlayer1(score: Int): Int {
         var totalscore: Int = 0
 
@@ -107,6 +127,7 @@ class ScoreFragment : Fragment() {
         return totalscore
     }
 
+    //Calculate totalscore for player 2 by thow
     private fun calcScorePlayer2(score: Int): Int {
         var totalscore: Int = 0
 
@@ -117,7 +138,7 @@ class ScoreFragment : Fragment() {
         return totalscore
     }
 
-    //Return next turn
+    //Return the next turn
     private fun nextTurn(): Int {
         var nextTurn: Int = 0
 

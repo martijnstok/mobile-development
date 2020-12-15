@@ -14,7 +14,7 @@ interface ScoreDao {
 //    fun getAllScores(): LiveData<List<Score>>
 
     @Query("SELECT * FROM scoreTable WHERE player = :player")
-    fun getAllScoresByPlayer(player:Int): LiveData<List<Score>>
+    fun getAllScoresByPlayer(player: Int): LiveData<List<Score>>
 
     @Insert
     suspend fun insertScore(score: Score)

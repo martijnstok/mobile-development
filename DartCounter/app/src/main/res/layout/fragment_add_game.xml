@@ -6,30 +6,54 @@
     android:layout_height="match_parent"
     tools:context=".ui.AddGameFragment">
 
-    <EditText
-        android:id="@+id/et_player_1"
-        android:layout_width="wrap_content"
+    <ImageView
+        android:id="@+id/ivLogo"
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo"
+        tools:src="@drawable/logo"
+        tools:srcCompat="@drawable/logo" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/et_player_1_container"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:ems="10"
+        android:hint="@string/player_name"
         android:inputType="textPersonName"
-        android:hint="@string/player_1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/ivLogo">
 
-    <EditText
-        android:id="@+id/et_player_2"
-        android:layout_width="wrap_content"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_player_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/et_player_2_container"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:ems="10"
+        android:layout_marginTop="16dp"
+        android:hint="@string/player_name"
         android:inputType="textPersonName"
-        android:hint="@string/player_2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_player_1" />
+        app:layout_constraintTop_toBottomOf="@+id/et_player_1_container">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_player_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/btn_create_game"
@@ -46,5 +70,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_player_2" />
+        app:layout_constraintTop_toBottomOf="@+id/et_player_2_container" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,12 +8,13 @@ import com.example.dartcounter.R
 import com.example.dartcounter.model.Score
 import kotlinx.android.synthetic.main.item_score.view.*
 
-class ScoreAdapter(private val score: List<Score>): RecyclerView.Adapter<ScoreAdapter.ViewHolder>(){
+class ScoreAdapter(private val score: List<Score>) :
+    RecyclerView.Adapter<ScoreAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun databind(score: Score) {
-          itemView.tvScore.text = score.score.toString()
+            itemView.tvScore.text = score.score.toString()
         }
     }
 

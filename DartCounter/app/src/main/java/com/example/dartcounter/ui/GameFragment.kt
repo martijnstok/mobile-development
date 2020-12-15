@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dartcounter.R
 import com.example.dartcounter.model.Score
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_game.*
 
 /**
@@ -32,8 +33,8 @@ class GameFragment : Fragment() {
     private val winScore: Int = 501
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_game, container, false)
@@ -45,37 +46,46 @@ class GameFragment : Fragment() {
         initViews()
         observeAddScoreResult()
 
+        //Set button onClickListener
         btnScore.setOnClickListener {
+
+            //Change fragment to ScroeFragment
             findNavController().navigate(R.id.action_gameFragment_to_scoreFragment)
         }
     }
 
+    //Create function to load the view
     private fun initViews() {
+        //Set the RecyclerView for player 1
         rv_score_player1.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         rv_score_player1.adapter = scoreAdapterPlayer1
 
+        //Set the RecyclerView for player 2
         rv_score_player2.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         rv_score_player2.adapter = scoreAdapterPlayer2
 
         //Make sure you van access LastGame Table
         gameviewModel.lastGame.observe(viewLifecycleOwner, Observer { game ->
+            //Set playernames and totalscore
             tv_player1.text = game.player1name
             tv_player2.text = game.player2name
             tv_score_player1.text = (this.winScore - game.player1score).toString()
             tv_score_player2.text = (this.winScore - game.player2score).toString()
 
-            if(game.turn == 1){
+            //Check witch turn it is
+            //Notify the user witch turn it is by making name bold
+            if (game.turn == 1) {
                 tv_player1.setTypeface(null, Typeface.BOLD)
                 tv_player2.setTypeface(null, Typeface.NORMAL)
-            }else{
+            } else {
                 tv_player2.setTypeface(null, Typeface.BOLD)
                 tv_player1.setTypeface(null, Typeface.NORMAL)
             }
 
             //Check if player won
-            if(game.player1score == this.winScore){
+            if (game.player1score == this.winScore) {
                 playerWon(game.player1name)
-            }else if (game.player2score  == this.winScore){
+            } else if (game.player2score == this.winScore) {
                 playerWon(game.player2name)
             }
         })
@@ -98,12 +108,10 @@ class GameFragment : Fragment() {
     }
 
     //Player won, reset game and give notice to winner
-    private fun playerWon(winner: String){
-        Toast.makeText(
-            activity,
-            getString(R.string.winner, winner),
-            Toast.LENGTH_LONG
-        ).show()
+    private fun playerWon(winner: String) {
+        Snackbar.make(tv_titel, getString(R.string.winner, winner), Snackbar.LENGTH_LONG).show()
+
+        //Change fragment to first Fragment (addGame)
         findNavController().navigate(R.id.action_gameFragment_to_addGameFragment)
     }
 }

@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name = "MADLevel5Task2"
+rootProject.name = "MadLevel5Task2"

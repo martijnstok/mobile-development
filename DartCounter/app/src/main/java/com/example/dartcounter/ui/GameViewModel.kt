@@ -19,21 +19,24 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
 
     val lastGame: LiveData<Game> = gameRepository.getLastGame()
 
+    //Insert game function
     fun insertGame(game: Game) {
         ioScope.launch {
             gameRepository.insertGame(game)
         }
     }
 
+    //Delete all games function
     fun deleteAllGames() {
         ioScope.launch {
             gameRepository.deleteAllGames()
         }
     }
 
+    //Update game function
     fun updateGame(turn: Int, player1score: Int, player2score: Int) {
 
-        //if there is an existing note, take that id to update it instead of adding a new one
+        //if there is an existing game, take those values to update it instead of adding a new one
         val newGame = Game(
             id = lastGame.value?.id,
             player1name = lastGame.value?.player1name.toString(),

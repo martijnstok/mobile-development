@@ -7,8 +7,9 @@ import com.example.dartcounter.dao.GameDao
 import com.example.dartcounter.database.GameRoomDatabase
 import com.example.dartcounter.model.Game
 
-public class GameRepository(context: Context)  {
+public class GameRepository(context: Context) {
     private var gameDao: GameDao
+
     init {
         val gameRoomDatabase = GameRoomDatabase.getDatabase(context)
         gameDao = gameRoomDatabase!!.GameDao()
